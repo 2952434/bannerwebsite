@@ -1,0 +1,53 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://82.157.145.197:3306/bannerwebsite?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: 'BannerStudioWebsite'
+      password: 'BannerStudioWebsite'
+      filter: stat
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 3600000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  level:
+    studio.banner.officialwebsite: debug
+    org.springfromework.web: info
+    com.baomidou.mybatisplus: error
+  file:
+    name: log\officialWebsite.log
+  # 文件上传大小配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  redis:
+    host: 82.157.145.197
+    port: 6379
+    password: asd.123
+
+# 打印sql语句
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 腾讯云地址
+qcloud:
+  path: https://banner-studio-official-website-1306088952.cos.ap-beijing.myqcloud.com
+  bucketName: banner-studio-official-website-1306088952
+  secretId: AKID5zf5KJ2TfcJktmOjncARSCfrlPnukJcf
+  secretKey: nIYZ3IFwMVO1NSHo54mDPKyMUMxHL9gw
+  region: ap-beijing
+  prefix: /images/
